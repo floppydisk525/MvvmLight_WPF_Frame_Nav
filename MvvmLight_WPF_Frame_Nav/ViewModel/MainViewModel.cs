@@ -1,5 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using MvvmLight_WPF_Frame_Nav.Model;
+using System.Windows.Controls;
+//using MvvmLight_Nav_MJ.Helpers;
 
 namespace MvvmLight_WPF_Frame_Nav.ViewModel
 {
@@ -35,6 +37,29 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
                 Set(ref _welcomeTitle, value);
             }
         }
+        
+        /// <summary>
+        /// The <see cref="DisplayPage" /> property's name.
+        /// </summary>
+        public const string DisplayPagePropertyName = "DisplayPage";
+
+        private Frame _displayPage = new Frame();
+
+        /// <summary>
+        /// Sets and gets the DisplayPage property.
+        /// Changes to that property's value raise the PropertyChanged event. 
+        /// </summary>
+        public Frame DisplayPage
+        {
+            get
+            {
+                return _displayPage;
+            }
+            set
+            {
+                Set(DisplayPagePropertyName, ref _displayPage, value);
+            }
+        }
 
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
@@ -52,6 +77,7 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
                     }
 
                     WelcomeTitle = item.Title;
+                    DisplayPage.NavigationService.Navigate(ViewModelLocator.IntroPageUri);
                 });
         }
 
