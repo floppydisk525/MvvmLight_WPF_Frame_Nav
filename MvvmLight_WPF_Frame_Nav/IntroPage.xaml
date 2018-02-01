@@ -13,7 +13,6 @@
         <TextBox Text="{Binding Screen1Text}" HorizontalAlignment="Left" Height="23" Margin="65,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
         <TextBox Text="{Binding Screen2Text}" HorizontalAlignment="Left" Height="23" Margin="65,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
         <TextBox Text="{Binding Screen3Text}" HorizontalAlignment="Left" Height="23" Margin="65,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
-
     </Grid>
 </Page>
 
