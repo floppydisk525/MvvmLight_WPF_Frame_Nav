@@ -39,27 +39,29 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
         }
         
         /// <summary>
-        /// The <see cref="DisplayPage" /> property's name.
+        /// The <see cref="DisplayFrame" /> property's name.
         /// </summary>
-        public const string DisplayPagePropertyName = "DisplayPage";
+        public const string DisplayFramePropertyName = "DisplayFrame";
 
-        private Frame _displayPage = new Frame();
+        private Frame _displayFrame = new Frame();
 
         /// <summary>
         /// Sets and gets the DisplayPage property.
         /// Changes to that property's value raise the PropertyChanged event. 
         /// </summary>
-        public Frame DisplayPage
+        public Frame DisplayFrame
         {
             get
             {
-                return _displayPage;
+                return _displayFrame;
             }
             set
             {
-                Set(DisplayPagePropertyName, ref _displayPage, value);
+                Set(DisplayFramePropertyName, ref _displayFrame, value);
             }
         }
+
+        //public Frame DisplayPage { get => _displayFrame; set => _displayFrame = value; }
 
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
@@ -77,7 +79,7 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
                     }
 
                     WelcomeTitle = item.Title;
-                    DisplayPage.NavigationService.Navigate(ViewModelLocator.IntroPageUri);
+                    DisplayFrame.NavigationService.Navigate(ViewModelLocator.IntroPageUri);
                 });
         }
 
