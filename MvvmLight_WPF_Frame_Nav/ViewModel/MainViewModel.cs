@@ -1,7 +1,8 @@
 ﻿using GalaSoft.MvvmLight;
 using MvvmLight_WPF_Frame_Nav.Model;
+using System;
 using System.Windows.Controls;
-//using MvvmLight_Nav_MJ.Helpers;
+using MvvmLight_WPF_Frame_Nav.Helpers;
 
 namespace MvvmLight_WPF_Frame_Nav.ViewModel
 {
@@ -14,6 +15,7 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
     public class MainViewModel : ViewModelBase
     {
         private readonly IDataService _dataService;
+        private readonly INavigationService _navigationService;
 
         /// <summary>
         /// The <see cref="WelcomeTitle" /> property's name.
@@ -61,14 +63,36 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
             }
         }
 
-        //public Frame DisplayPage { get => _displayFrame; set => _displayFrame = value; }
+        /// <summary>
+        /// The <see cref="FrameUri" /> property's name.
+        /// </summary>
+        public const string FrameUriPropertyName = "FrameUri";
+
+        private Uri _frameUri;
+
+        /// <summary>
+        /// Sets and gets the FrameUri property.
+        /// Changes to that property's value raise the PropertyChanged event. 
+        /// </summary>
+        public Uri FrameUri
+        {
+            get
+            {
+                return _frameUri;
+            }
+            set
+            {
+                Set(FrameUriPropertyName, ref _frameUri, value);
+            }
+        }
 
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
-        public MainViewModel(IDataService dataService)
+        public MainViewModel(IDataService dataService, INavigationService navigationService)
         {
             _dataService = dataService;
+            //_navigationService = navigationService;
             _dataService.GetData(
                 (item, error) =>
                 {
@@ -79,8 +103,13 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
                     }
 
                     WelcomeTitle = item.Title;
-                    DisplayFrame.NavigationService.Navigate(ViewModelLocator.IntroPageUri);
+
+
                 });
+            FrameUri = ViewModelLocator.IntroPageUri;
+            
+            //FrameUri = _navigationService.NavigateTo(ViewModelLocator.IntroPageUri);
+           //_navigationService.NavigateTo(ViewModelLocator.IntroPageUri);
         }
 
         ////public override void Cleanup()

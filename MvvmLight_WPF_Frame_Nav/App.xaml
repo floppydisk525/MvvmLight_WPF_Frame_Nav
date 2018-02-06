@@ -13,9 +13,10 @@
         <!--Global View Model Locator-->
         <vm:ViewModelLocator x:Key="Locator"
                              d:IsDataSource="True" />
+      <!-- DATA TEMPLATE FROM LAI - REMOVED. 
         <DataTemplate DataType="{x:Type vm:IntroViewModel}">
             <v:IntroPage/>
-        </DataTemplate>
+        </DataTemplate>   -->
     </Application.Resources>
     
 </Application>

@@ -14,7 +14,7 @@ using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
 using MvvmLight_WPF_Frame_Nav.Model;
 using System;
-//using MvvmLight_WPF_Frame_Nav.Helpers;
+using MvvmLight_WPF_Frame_Nav.Helpers;
 
 namespace MvvmLight_WPF_Frame_Nav.ViewModel
 {
@@ -30,6 +30,8 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
         public static readonly Uri IntroPageUri = new Uri("/IntroPage.xaml", UriKind.Relative);
         public static readonly Uri MiddlePageUri = new Uri("/MiddlePage.xaml", UriKind.Relative);
         public static readonly Uri LastPageUri = new Uri("/LastPage.xaml", UriKind.Relative);
+
+        
 
         static ViewModelLocator()
         {
@@ -49,7 +51,8 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
             SimpleIoc.Default.Register<MiddleViewModel>();
             SimpleIoc.Default.Register<LastViewModel>();
 
-            //SimpleIoc.Default.Register<INavigationService, NavigationService>();   //want to add, not needed at the moment w/ the frame
+            NavigationService NavigationService = new NavigationService();
+            SimpleIoc.Default.Register<INavigationService, NavigationService>();   
         }
 
         /// <summary>
