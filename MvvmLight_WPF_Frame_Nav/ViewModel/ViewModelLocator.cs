@@ -31,8 +31,6 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
         public static readonly Uri MiddlePageUri = new Uri("/MiddlePage.xaml", UriKind.Relative);
         public static readonly Uri LastPageUri = new Uri("/LastPage.xaml", UriKind.Relative);
 
-        
-
         static ViewModelLocator()
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
@@ -51,7 +49,6 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
             SimpleIoc.Default.Register<MiddleViewModel>();
             SimpleIoc.Default.Register<LastViewModel>();
 
-            NavigationService NavigationService = new NavigationService();
             SimpleIoc.Default.Register<INavigationService, NavigationService>();   
         }
 

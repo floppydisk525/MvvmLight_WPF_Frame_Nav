@@ -3,6 +3,7 @@ using MvvmLight_WPF_Frame_Nav.Model;
 using System;
 using System.Windows.Controls;
 using MvvmLight_WPF_Frame_Nav.Helpers;
+using GalaSoft.MvvmLight.Command;
 
 namespace MvvmLight_WPF_Frame_Nav.ViewModel
 {
@@ -15,8 +16,8 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
     public class MainViewModel : ViewModelBase
     {
         private readonly IDataService _dataService;
-        private readonly INavigationService _navigationService;
-
+        //private readonly INavigationService _navigationService;
+        
         /// <summary>
         /// The <see cref="WelcomeTitle" /> property's name.
         /// </summary>
@@ -37,29 +38,6 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
             set
             {
                 Set(ref _welcomeTitle, value);
-            }
-        }
-        
-        /// <summary>
-        /// The <see cref="DisplayFrame" /> property's name.
-        /// </summary>
-        public const string DisplayFramePropertyName = "DisplayFrame";
-
-        private Frame _displayFrame = new Frame();
-
-        /// <summary>
-        /// Sets and gets the DisplayPage property.
-        /// Changes to that property's value raise the PropertyChanged event. 
-        /// </summary>
-        public Frame DisplayFrame
-        {
-            get
-            {
-                return _displayFrame;
-            }
-            set
-            {
-                Set(DisplayFramePropertyName, ref _displayFrame, value);
             }
         }
 
@@ -89,7 +67,8 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
-        public MainViewModel(IDataService dataService, INavigationService navigationService)
+        //public MainViewModel(IDataService dataService, INavigationService navigationService)
+        public MainViewModel(IDataService dataService)
         {
             _dataService = dataService;
             //_navigationService = navigationService;
@@ -107,9 +86,75 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
 
                 });
             FrameUri = ViewModelLocator.IntroPageUri;
-            
+                       
             //FrameUri = _navigationService.NavigateTo(ViewModelLocator.IntroPageUri);
            //_navigationService.NavigateTo(ViewModelLocator.IntroPageUri);
+        }
+
+        private RelayCommand _changeToIntroPage;
+
+        /// <summary>
+        /// Gets the ChangeToIntroPage.
+        /// </summary>
+        public RelayCommand ChangeToIntroPage
+        {
+            get
+            {
+                return _changeToIntroPage
+                    ?? (_changeToIntroPage = new RelayCommand(
+                    () =>
+                    {
+                        FrameUri = ViewModelLocator.IntroPageUri;                        
+                    },
+                    () => FrameUri != ViewModelLocator.IntroPageUri));                
+            }
+        }
+
+        private RelayCommand _changeToMiddlePage;
+
+        /// <summary>
+        /// Gets the ChangeToMiddlePage.
+        /// </summary>
+        public RelayCommand ChangeToMiddlePage
+        {
+            get
+            {
+                return _changeToMiddlePage ?? (_changeToMiddlePage = new RelayCommand(
+                    ExecuteChangeToMiddlePage,
+                    CanExecuteChangeToMiddlePage));
+            }
+        }
+
+        private void ExecuteChangeToMiddlePage()
+        {
+            FrameUri = ViewModelLocator.MiddlePageUri;            
+        }
+
+        private bool CanExecuteChangeToMiddlePage()
+        {
+            if (FrameUri == ViewModelLocator.MiddlePageUri)            
+            { return false; }
+            else
+            { return true; }            
+        }
+        
+        private RelayCommand _changeToLastPage;
+
+        /// <summary>
+        /// Gets the ChangeToLastPage.
+        /// </summary>
+        public RelayCommand ChangeToLastPage
+        {
+            get
+            {
+                return _changeToLastPage
+                    ?? (_changeToLastPage = new RelayCommand(
+                    () =>
+                    {
+                        FrameUri = ViewModelLocator.LastPageUri;                       
+                    },
+                () => FrameUri != ViewModelLocator.LastPageUri));                
+            }
         }
 
         ////public override void Cleanup()
