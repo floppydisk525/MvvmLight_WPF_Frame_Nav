@@ -3,7 +3,7 @@ using MvvmLight_WPF_Frame_Nav.Model;
 using System;
 using System.Windows.Controls;
 using MvvmLight_WPF_Frame_Nav.Helpers;
-using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.CommandWpf;
 
 namespace MvvmLight_WPF_Frame_Nav.ViewModel
 {
