@@ -11,6 +11,7 @@
 
     <Grid>
         <TextBox Text="{Binding Screen3Text}" HorizontalAlignment="Left" Height="23" Margin="65,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
+        <TextBlock HorizontalAlignment="Left" Height="41" Margin="51,10,0,0" TextWrapping="Wrap" Text="LastPage - Page 3" VerticalAlignment="Top" Width="202"/>
 
     </Grid>
 </Page>

@@ -104,7 +104,7 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
                     ?? (_changeToIntroPage = new RelayCommand(
                     () =>
                     {
-                        FrameUri = ViewModelLocator.IntroPageUri;                        
+                        FrameUri = ViewModelLocator.IntroPageUri;                       
                     },
                     () => FrameUri != ViewModelLocator.IntroPageUri));                
             }
