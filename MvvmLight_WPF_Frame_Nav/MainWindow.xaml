@@ -7,7 +7,7 @@
         mc:Ignorable="d ignore"
         Height="386.291"
         Width="392"
-        Title="MVVM Light Application"
+        Title="MVVM Light FRAME Application"
         DataContext="{Binding Main, Source={StaticResource Locator}}">
 
     <Window.Resources>
@@ -20,8 +20,8 @@
 
     <Grid x:Name="LayoutRoot">
         <TextBlock FontSize="18" FontWeight="Bold" Foreground="Purple" Text="{Binding WelcomeTitle}" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" Margin="36,28,53,301" />
-        
-        <Frame  x:Name="MainFrameDS"  Source="{Binding FrameUri}"  HorizontalAlignment="Left" Height="211" Margin="109,88,0,0" VerticalAlignment="Top" Width="258"/>
+
+        <Frame  x:Name="MainFrameDS"  Source="{Binding FrameUri, Mode=TwoWay}"  HorizontalAlignment="Left" Height="211" Margin="109,88,0,0" VerticalAlignment="Top" Width="258"/>
         <Button Content="Intro" Command="{Binding ChangeToIntroPage}" HorizontalAlignment="Left" Height="35" Margin="19,88,0,0" VerticalAlignment="Top" Width="76"/>
         <Button Content ="Middle" Command ="{Binding ChangeToMiddlePage}" HorizontalAlignment="Left" Height="35" Margin="19,135,0,0" VerticalAlignment="Top" Width="76"/>
         <Button Content="Last" Command="{Binding ChangeToLastPage}" HorizontalAlignment="Left" Height="35" Margin="19,183,0,0" VerticalAlignment="Top" Width="76"/>

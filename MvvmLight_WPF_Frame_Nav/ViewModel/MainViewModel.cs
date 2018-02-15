@@ -61,6 +61,8 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
             set
             {
                 Set(FrameUriPropertyName, ref _frameUri, value);
+                System.Diagnostics.Debug.WriteLine(_frameUri.ToString(), "_frameUri");
+                System.Diagnostics.Debug.WriteLine(FrameUri.ToString(), "FrameUri");
             }
         }
 
@@ -86,9 +88,11 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
 
                 });
             FrameUri = ViewModelLocator.IntroPageUri;
-                       
+            //ChangeToLastPage.RaiseCanExecuteChanged();
+            ChangeToIntroPage.RaiseCanExecuteChanged();
+
             //FrameUri = _navigationService.NavigateTo(ViewModelLocator.IntroPageUri);
-           //_navigationService.NavigateTo(ViewModelLocator.IntroPageUri);
+            //_navigationService.NavigateTo(ViewModelLocator.IntroPageUri);
         }
 
         private RelayCommand _changeToIntroPage;
@@ -106,9 +110,9 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
                     {
                         FrameUri = ViewModelLocator.IntroPageUri;                       
                     },
-                    () => FrameUri != ViewModelLocator.IntroPageUri));                
+                    () =>   CheckUri(FrameUri, ViewModelLocator.IntroPageUri) ));      //FrameUri != ViewModelLocator.IntroPageUri          
             }
-        }
+        }                
 
         private RelayCommand _changeToMiddlePage;
 
@@ -132,10 +136,12 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
 
         private bool CanExecuteChangeToMiddlePage()
         {
-            if (FrameUri == ViewModelLocator.MiddlePageUri)            
-            { return false; }
-            else
-            { return true; }            
+            return CheckUri(FrameUri, ViewModelLocator.MiddlePageUri);
+            
+            //if (FrameUri == ViewModelLocator.MiddlePageUri)            
+            //{ return false; }
+            //else
+            //{ return true; }            
         }
         
         private RelayCommand _changeToLastPage;
@@ -153,8 +159,21 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
                     {
                         FrameUri = ViewModelLocator.LastPageUri;                       
                     },
-                () => FrameUri != ViewModelLocator.LastPageUri));                
+                () => CheckUri(FrameUri, ViewModelLocator.LastPageUri) ));                
             }
+        }
+
+        private Boolean CheckUri(Uri _frameUriToCheck, Uri _vmUri)
+        {
+            string StringUriToCheck = _frameUriToCheck.ToString();
+            string StringUriVM = _vmUri.ToString();
+            System.Diagnostics.Debug.WriteLine(StringUriToCheck, "StringUriToCheck");
+            System.Diagnostics.Debug.WriteLine(StringUriVM, "StringUriVM");
+
+            if (StringUriVM.Contains(StringUriToCheck))
+            { return false; }
+            else
+            { return true; }
         }
 
         ////public override void Cleanup()
