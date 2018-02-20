@@ -6,8 +6,7 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
     public class MiddleViewModel : ViewModelBase
     {
         private readonly IDataService _dataService;
-
-
+        
         //mvvminpcset
 
         /// <summary>

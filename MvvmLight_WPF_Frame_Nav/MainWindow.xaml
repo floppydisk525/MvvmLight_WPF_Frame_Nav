@@ -15,6 +15,10 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Skins/MainSkin.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <!--  MJ note=- trying to instantiate the introPage and view model to populate the frame...  ugh...  look at lais, laurents.
+            <DataTemplate DataType="{x:Type ViewModel:MVVMLight_WPF_Frame_Nav/ViewModel/IntroViewModel}">
+                <View:IntroPage/>
+            </DataTemplate>-->
         </ResourceDictionary>
     </Window.Resources>
 

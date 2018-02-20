@@ -86,10 +86,8 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
                     WelcomeTitle = item.Title;                    
                 });
             
-            FrameUri = ViewModelLocator.IntroPageUri;
-            //ChangeToLastPage.RaiseCanExecuteChanged();
-            ChangeToIntroPage.RaiseCanExecuteChanged();
-
+            FrameUri = ViewModelLocator.IntroPageUri;            
+            
             //FrameUri = _navigationService.NavigateTo(ViewModelLocator.IntroPageUri);
             //_navigationService.NavigateTo(ViewModelLocator.IntroPageUri);
         }
