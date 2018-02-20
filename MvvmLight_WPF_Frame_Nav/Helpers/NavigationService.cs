@@ -30,17 +30,28 @@ namespace MvvmLight_WPF_Frame_Nav.Helpers
             }
         }
 
+        public NavigationService()
+        {
+            var _mainFrame = GetDescendantFromName(Application.Current.MainWindow, "MainFrameDS") as Frame;
+        }
+
         private bool EnsureMainFrame()
         {
-            if (_mainFrame != null)
-            {
-                return true;
-            }
+            //commented out for testing code below!
+            //if (_mainFrame != null)
+            //{
+            //    return true;
+            //}
 
             //_mainFrame = Application.Current.MainWindow.FindName("MainFrameDS") as Frame;
             // used this link:  https://stackoverflow.com/questions/2216917/wpf-equivalent-to-silverlight-rootvisual
-            _mainFrame = LogicalTreeHelper.FindLogicalNode(Application.Current.MainWindow, "MainFrameDS") as Frame;
+            //_mainFrame = LogicalTreeHelper.FindLogicalNode(Application.Current.MainWindow, "MainFrameDS") as Frame;
+           
             
+            // from stack overflow 28966819/mvvm-light-5-0-how-to-use-the-navigation-service   (modified below)
+            //          var frame = GetDescendantFromName(Application.Current.MainWindow, "MainFrame") as Frame;
+            var _mainFrame = GetDescendantFromName(Application.Current.MainWindow, "MainFrameDS") as Frame;   
+
             if (_mainFrame != null)
             {
                 // Could be null if the app runs inside a design tool
