@@ -7,16 +7,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 			 xmlns:ignore="http://www.galasoft.ch/ignore"
              StartupUri="MainWindow.xaml"
-             mc:Ignorable="d ignore">
+             mc:Ignorable="d ignore" >
     
     <Application.Resources>
         <!--Global View Model Locator-->
         <vm:ViewModelLocator x:Key="Locator"
                              d:IsDataSource="True" />
-      <!-- DATA TEMPLATE FROM LAI - REMOVED. 
-        <DataTemplate DataType="{x:Type vm:IntroViewModel}">
+          
+        <!--<DataTemplate DataType="{x:Type vm:IntroViewModel}">
             <v:IntroPage/>
-        </DataTemplate>   -->
+        </DataTemplate>-->  
     </Application.Resources>
     
 </Application>
