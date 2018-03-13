@@ -5,6 +5,9 @@ using System.Windows.Controls;
 using MvvmLight_WPF_Frame_Nav.Helpers;
 using GalaSoft.MvvmLight.CommandWpf;
 
+using GalaSoft.MvvmLight.Ioc;
+using Microsoft.Practices.ServiceLocation;
+
 namespace MvvmLight_WPF_Frame_Nav.ViewModel
 {
     /// <summary>
@@ -16,7 +19,7 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
     public class MainViewModel : ViewModelBase
     {
         private readonly IDataService _dataService;
-        //private readonly INavigationService _navigationService;
+        private readonly INavigationService _navigationService;
         
         /// <summary>
         /// The <see cref="WelcomeTitle" /> property's name.
@@ -70,10 +73,9 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
         //public MainViewModel(IDataService dataService, INavigationService navigationService)
-        public MainViewModel(IDataService dataService)
+        public MainViewModel(IDataService dataService, INavigationService navigationService)
         {
             _dataService = dataService;
-            //_navigationService = navigationService;
             _dataService.GetData(
                 (item, error) =>
                 {
@@ -85,13 +87,14 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
 
                     WelcomeTitle = item.Title;                    
                 });
-            
-            FrameUri = ViewModelLocator.IntroPageUri;            
-            
-            //FrameUri = _navigationService.NavigateTo(ViewModelLocator.IntroPageUri);
-            //_navigationService.NavigateTo(ViewModelLocator.IntroPageUri);
-        }
+                        
+            _navigationService = navigationService;
+            FrameUri = ViewModelLocator.IntroPageUri;
+            //_navigationService = ServiceLocator.Current.GetInstance<NavigationService>();
 
+            //_navigationService.NavigateTo(ViewModelLocator.MiddlePageUri);
+        }
+       
         private RelayCommand _changeToIntroPage;
 
         /// <summary>
@@ -128,7 +131,8 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
 
         private void ExecuteChangeToMiddlePage()
         {
-            FrameUri = ViewModelLocator.MiddlePageUri;            
+            //FrameUri = ViewModelLocator.MiddlePageUri;
+            _navigationService.NavigateTo(ViewModelLocator.MiddlePageUri);
         }
 
         private bool CanExecuteChangeToMiddlePage()
@@ -154,7 +158,7 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
                     ?? (_changeToLastPage = new RelayCommand(
                     () =>
                     {
-                        FrameUri = ViewModelLocator.LastPageUri;                       
+                        FrameUri = ViewModelLocator.LastPageUri;                        
                     },
                 () => CheckUri(FrameUri, ViewModelLocator.LastPageUri) ));                
             }

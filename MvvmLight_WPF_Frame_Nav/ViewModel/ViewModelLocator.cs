@@ -44,18 +44,20 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
                 SimpleIoc.Default.Register<IDataService, DataService>();
             }
 
+            var NavigationService = new NavigationService();
+            SimpleIoc.Default.Register<INavigationService, NavigationService>();
+
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<IntroViewModel>();
             SimpleIoc.Default.Register<MiddleViewModel>();
             SimpleIoc.Default.Register<LastViewModel>();
 
-            var NavigationService = new NavigationService();
-            SimpleIoc.Default.Register<INavigationService, NavigationService>();
 
-            if (ViewModelBase.IsInDesignModeStatic)
-            {
-                var Intro = ServiceLocator.Current.GetInstance<IntroViewModel>();
-            }
+
+            //if (ViewModelBase.IsInDesignModeStatic)
+            //{
+            //    var Intro = ServiceLocator.Current.GetInstance<IntroViewModel>();
+            //}
         }
 
         /// <summary>
