@@ -13,8 +13,6 @@
         <!--Global View Model Locator-->
         <vm:ViewModelLocator x:Key="Locator"
                              d:IsDataSource="True" />
-        <DataTemplate DataType="{x:Type vm:IntroViewModel}">
-            <v:IntroPage/>
-        </DataTemplate>
     </Application.Resources>    
+    
 </Application>

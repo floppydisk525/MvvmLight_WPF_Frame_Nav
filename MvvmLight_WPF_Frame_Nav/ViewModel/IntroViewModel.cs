@@ -98,6 +98,6 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
                     Screen2Text = item.Screen2;
                     Screen3Text = item.Screen3;
                 });
-        }
+        }       
     }
 }
