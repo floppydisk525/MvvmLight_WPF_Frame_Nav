@@ -92,9 +92,6 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
 
 
             FrameUri = ViewModelLocator.IntroPageUri;
-            
-            //_navigationService = ServiceLocator.Current.GetInstance<NavigationService>();
-
             //_navigationService.NavigateTo(ViewModelLocator.MiddlePageUri);
         }
        

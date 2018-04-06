@@ -53,12 +53,6 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
             SimpleIoc.Default.Register<MiddleViewModel>();
             SimpleIoc.Default.Register<LastViewModel>();
 
-//#if DEBUG
-//            if (ViewModelBase.IsInDesignModeStatic)
-//            {
-//                IntroViewModel Intro = ServiceLocator.Current.GetInstance<IntroViewModel>();              
-//            }
-//#endif
         }
 
         /// <summary>
