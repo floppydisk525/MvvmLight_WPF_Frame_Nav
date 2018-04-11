@@ -10,9 +10,9 @@
       DataContext="{Binding Intro, Source={StaticResource Locator}}">
 
     <Grid>
-        <TextBox Text="{Binding Screen1Text}" HorizontalAlignment="Left" Height="23" Margin="65,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
-        <TextBox Text="{Binding Screen2Text}" HorizontalAlignment="Left" Height="23" Margin="65,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
-        <TextBox Text="{Binding Screen3Text}" HorizontalAlignment="Left" Height="23" Margin="65,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
+        <TextBox Text="{Binding Screen1Text, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" Margin="65,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
+        <TextBox Text="{Binding Screen2Text, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" Margin="65,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
+        <TextBox Text="{Binding Screen3Text, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" Margin="65,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
         <TextBlock Text="IntroPage - Page 1" HorizontalAlignment="Left" Height="35" Margin="44,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="209"/>
     </Grid>
 </Page>
