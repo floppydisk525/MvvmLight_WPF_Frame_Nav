@@ -1,13 +1,15 @@
 ﻿using GalaSoft.MvvmLight;
 using MvvmLight_WPF_Frame_Nav.Model;
+using GalaSoft.MvvmLight.Ioc;
+
+using System.Windows.Navigation;
 
 namespace MvvmLight_WPF_Frame_Nav.ViewModel
 {
     public class IntroViewModel : ViewModelBase
     {
         private readonly IDataService _dataService;
-
-
+        
         //mvvminpcset
 
         /// <summary>
@@ -53,6 +55,7 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
             set
             {
                 Set(Screen2TextPropertyName, ref _screen2Text, value);
+                System.Diagnostics.Debug.WriteLine("Screen2Text Property");
             }
         }
 
@@ -76,6 +79,7 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
             set
             {
                 Set(Screen3TextPropertyName, ref _screen3Text, value);
+                System.Diagnostics.Debug.WriteLine("Screen3Text Property");
             }
         }
 
@@ -98,6 +102,28 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
                     Screen2Text = item.Screen2;
                     Screen3Text = item.Screen3;
                 });
-        }       
+
+            var result1 = SimpleIoc.Default.GetInstance<IDataService>("single");
+            result1.GetData(
+                (item, error) =>
+                {
+                    if (error != null)
+                    {
+                        // Report error here
+                        return;
+                    }
+
+                    Screen1Text = item.Screen1;         // this is where you set the link to the data model.  item is DataItem Class, through dataservice above!
+                    Screen2Text = item.Screen2;
+                    Screen3Text = item.Screen3;
+                });
+        }
+
+    //    protected override void OnNavigatedTo(NavigationEventArgs e)
+    //    {
+
+    //    }
+
+    //    protected override void OnNavigatedFrom(NavigationEventArgs e)
     }
 }

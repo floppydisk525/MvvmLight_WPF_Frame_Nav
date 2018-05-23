@@ -7,6 +7,7 @@ using GalaSoft.MvvmLight.CommandWpf;
 
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace MvvmLight_WPF_Frame_Nav.ViewModel
 {

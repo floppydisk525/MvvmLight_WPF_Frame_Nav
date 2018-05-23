@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using MvvmLight_WPF_Frame_Nav.Model;
+using GalaSoft.MvvmLight.Ioc;
 
 namespace MvvmLight_WPF_Frame_Nav.ViewModel
 {
@@ -25,11 +26,13 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
         {
             get
             {
+                System.Diagnostics.Debug.WriteLine("Screen 3 GET Text Property");
                 return _screen3Text;
             }
             set
             {
-                Set(ref _screen3Text, value);
+                System.Diagnostics.Debug.WriteLine("Screen 3 SET Text Property");
+                Set(ref _screen3Text, value);       
             }
         }
 
@@ -49,6 +52,21 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
                     }
 
                     Screen3Text = item.Screen3;         // this is where you set the link to the data model.  item is DataItem Class, through dataservice above!
+                });
+
+            var result1 = SimpleIoc.Default.GetInstance<IDataService>("single");
+            result1.GetData(
+                (item, error) =>
+                {
+                    if (error != null)
+                    {
+                        // Report error here
+                        return;
+                    }
+
+                    //Screen1Text = item.Screen1;         // this is where you set the link to the data model.  item is DataItem Class, through dataservice above!
+                    //Screen2Text = item.Screen2;
+                    Screen3Text = item.Screen3;
                 });
         }
     }

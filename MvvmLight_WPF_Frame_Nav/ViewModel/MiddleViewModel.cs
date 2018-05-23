@@ -1,5 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using MvvmLight_WPF_Frame_Nav.Model;
+using GalaSoft.MvvmLight.Ioc;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace MvvmLight_WPF_Frame_Nav.ViewModel
 {
@@ -24,11 +26,13 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
         {
             get
             {
+                System.Diagnostics.Debug.WriteLine("Screen 2 Text GET Property");
                 return _screen2Text;
             }
             set
             {
-                Set(ref _screen2Text, value);
+                System.Diagnostics.Debug.WriteLine("Screen 2 Text SET Property");
+                Set(ref _screen2Text, value);                
             }
         }
 
@@ -49,9 +53,38 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
 
                     Screen2Text = item.Screen2;         // this is where you set the link to the data model.  item is DataItem Class, through dataservice above!
                 });
+
+            //var result1 = SimpleIoc.Default.GetInstance<IDataService>("single");
+            //result1.GetData(
+            //    (item, error) =>
+            //    {
+            //        if (error != null)
+            //        {
+            //            // Report error here
+            //            return;
+            //        }
+
+            //        //Screen1Text = item.Screen1;         // this is where you set the link to the data model.  item is DataItem Class, through dataservice above!
+            //        Screen2Text = item.Screen2;
+            //        //Screen3Text = item.Screen3;
+            //    });
+
+            Messenger.Default.Register<IDataService>(
+                this,
+                message =>
+                {
+                    message.GetData(
+                        (item, error) =>
+                        {
+                            if (error != null)
+                            {
+                                // Report error here
+                                return;
+                            }
+
+                            Screen2Text = item.Screen2;         // this is where you set the link to the data model.  item is DataItem Class, through dataservice above!
+                        });
+                });
         }
-
-
-
     }
 }

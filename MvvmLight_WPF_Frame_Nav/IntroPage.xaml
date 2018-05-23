@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:MvvmLight_WPF_Frame_Nav"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
-      Title="IntroPage"
+      Title="Intro Page"
       DataContext="{Binding Intro, Source={StaticResource Locator}}">
 
     <Grid>
