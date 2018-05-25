@@ -41,6 +41,79 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
             }
         }
 
+        #region Added properties from other viewmodels
+        /// <summary>
+        /// The <see cref="Screen1Text" /> property's name.
+        /// </summary>
+        public const string Screen1TextPropertyName = "Screen1Text";
+
+        private string _screen1Text = string.Empty;
+
+        /// <summary>
+        /// Sets and gets the Screen1Text property.
+        /// Changes to that property's value raise the PropertyChanged event. 
+        /// </summary>
+        public string Screen1Text
+        {
+            get
+            {
+                return _screen1Text;
+            }
+            set
+            {
+                Set(ref _screen1Text, value);
+            }
+        }
+
+        /// <summary>
+        /// The <see cref="Screen2Text" /> property's name.
+        /// </summary>
+        public const string Screen2TextPropertyName = "Screen2Text";
+
+        private string _screen2Text = string.Empty;
+
+        /// <summary>
+        /// Sets and gets the Screen2Text property.
+        /// Changes to that property's value raise the PropertyChanged event. 
+        /// </summary>
+        public string Screen2Text
+        {
+            get
+            {
+                return _screen2Text;
+            }
+            set
+            {
+                Set(Screen2TextPropertyName, ref _screen2Text, value);
+            }
+        }
+
+        /// <summary>
+        /// The <see cref="Screen3Text" /> property's name.
+        /// </summary>
+        public const string Screen3TextPropertyName = "Screen3Text";
+
+        private string _screen3Text = string.Empty;
+
+        /// <summary>
+        /// Sets and gets the Screen3Text property.
+        /// Changes to that property's value raise the PropertyChanged event. 
+        /// </summary>
+        public string Screen3Text
+        {
+            get
+            {
+                return _screen3Text;
+            }
+            set
+            {
+                Set(Screen3TextPropertyName, ref _screen3Text, value);
+            }
+        }
+
+
+        #endregion
+
         /// <summary>
         /// The <see cref="FrameUri" /> property's name.
         /// </summary>
@@ -83,7 +156,10 @@ namespace MvvmLight_WPF_Frame_Nav.ViewModel
                         return;
                     }
 
-                    WelcomeTitle = item.Title;                    
+                    WelcomeTitle = item.Title;
+                    Screen1Text = item.Screen1;
+                    Screen2Text = item.Screen2;
+                    Screen3Text = item.Screen3;
                 });
             
             FrameUri = ViewModelLocator.IntroPageUri;            

@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
       Title="Last Page"
-      DataContext="{Binding Last, Source={StaticResource Locator}}">
+      DataContext="{Binding Main, Source={StaticResource Locator}}">
 
     <Grid>
         <TextBox Text="{Binding Screen3Text}" HorizontalAlignment="Left" Height="23" Margin="65,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
