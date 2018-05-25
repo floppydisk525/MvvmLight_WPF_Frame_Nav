@@ -1,4 +1,8 @@
 # MvvmLight_WPF_Frame_Nav
+## Branch Notes
+This is the MultiVIEWS_OneViewModel BRANCH.  I really dislike the length of the name.
+This branch takes the page VIEWS and changes the datacontext for all of them to the MainViewModel.  Really, that's probably fine because the navigation is done from the window and if the views point to the mainviewmodel, that will persist the model throughout the views, since I only have one model at this point.  Easy way to do it.  
+
 ## Purpose
 The purpose is to create a template or example program that can be used as a staring point for a WPF C# Navigation program using MVVMLight toolkit and a Frame Control. The frame will navigate between several pages and the program will incorporate features of MVVMLight.  
 
